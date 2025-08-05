@@ -6,7 +6,7 @@ with various inputs including positive, negative, and zero values.
 """
 
 import unittest
-from calculator import add, subtract
+from calculator import add, subtract, divide
 
 
 class TestCalculatorFunctions(unittest.TestCase):
@@ -99,6 +99,30 @@ class TestCalculatorFunctions(unittest.TestCase):
             subtract(None, 5)
         with self.assertRaises(TypeError):
             subtract(5, None)
+    
+    def test_divide_positive_numbers(self):
+        """Test dividing two positive numbers."""
+        result = divide(10, 2)
+        self.assertEqual(result, 5.0, "Dividing 10 / 2 should equal 5.0")
+    
+    def test_divide_decimal_numbers(self):
+        """Test dividing decimal numbers."""
+        result = divide(7.5, 2.5)
+        self.assertEqual(result, 3.0, "Dividing 7.5 / 2.5 should equal 3.0")
+    
+    def test_divide_by_zero(self):
+        """Test that dividing by zero raises an error."""
+        # This test will fail because our divide function doesn't handle division by zero
+        with self.assertRaises(ZeroDivisionError):
+            divide(10, 0)
+    
+    def test_divide_invalid_input_string(self):
+        """Test that divide raises TypeError for string inputs."""
+        # This test will fail because our divide function doesn't do type checking
+        with self.assertRaises(TypeError):
+            divide("10", 2)
+        with self.assertRaises(TypeError):
+            divide(10, "2")
 
 
 if __name__ == '__main__':

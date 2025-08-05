@@ -7,7 +7,7 @@ with various examples and an interactive mode.
 """
 
 # Import our calculator functions
-from calculator import add, subtract
+from calculator import add, subtract, divide
 
 
 def demonstrate_addition():
@@ -57,14 +57,14 @@ def interactive_calculator():
     
     while True:
         # Get the operation from the user
-        operation = input("Choose operation (add/subtract) or 'q' to quit: ").lower()
+        operation = input("Choose operation (add/subtract/divide) or 'q' to quit: ").lower()
         
         if operation == 'q':
             print("Thanks for using the calculator!")
             break
         
-        if operation not in ['add', 'subtract']:
-            print("Invalid operation. Please choose 'add' or 'subtract'.")
+        if operation not in ['add', 'subtract', 'divide']:
+            print("Invalid operation. Please choose 'add', 'subtract', or 'divide'.")
             continue
         
         try:
@@ -76,9 +76,12 @@ def interactive_calculator():
             if operation == 'add':
                 result = add(first, second)
                 print(f"Result: {first} + {second} = {result}")
-            else:  # operation == 'subtract'
+            elif operation == 'subtract':
                 result = subtract(first, second)
                 print(f"Result: {first} - {second} = {result}")
+            else:  # operation == 'divide'
+                result = divide(first, second)
+                print(f"Result: {first} / {second} = {result}")
             
             print()  # Empty line for readability
             

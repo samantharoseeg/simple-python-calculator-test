@@ -64,3 +64,27 @@ def subtract(first_number, second_number):
         raise TypeError(f"Both arguments must be numbers. Got {type(first_number).__name__} and {type(second_number).__name__}")
     
     return first_number - second_number
+
+
+def divide(first_number, second_number):
+    """
+    Divide the first number by the second number.
+    
+    Args:
+        first_number (float): The dividend
+        second_number (float): The divisor
+    
+    Returns:
+        float: The quotient of the division
+    
+    Examples:
+        >>> divide(10, 2)
+        5.0
+        >>> divide(7, 3)
+        2.333333333333333
+    """
+    # Bug 1: Missing type checking (inconsistent with other functions)
+    # Bug 2: No division by zero check
+    # Bug 3: No proper error handling
+    result = first_number / second_number
+    return result
